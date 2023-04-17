@@ -6,6 +6,7 @@ public class Pickup_Guitar : MonoBehaviour
 {
     public GameObject PickUpText;
     public GameObject GuitarOnPlayer;
+    
 
 
     // Start is called before the first frame update
@@ -13,6 +14,7 @@ public class Pickup_Guitar : MonoBehaviour
     {
         GuitarOnPlayer.SetActive(false);
         PickUpText.SetActive(false);
+        
     }
 
     private void OnTriggerStay(Collider other)
