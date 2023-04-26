@@ -10,6 +10,7 @@ public class PianoPutDown : MonoBehaviour
     public GameObject PianoPlaced;
     public GameObject PianoDest;
     public AudioSource playSound;
+    public GameObject RecoverText;
 
     void Start()
     {
@@ -21,35 +22,47 @@ public class PianoPutDown : MonoBehaviour
 
         PianoPlaced.SetActive(false);
 
+        RecoverText.SetActive(false);
+
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-
-            PutDownText.SetActive(true);
-
-            if (Input.GetKey(KeyCode.E))
+            if (PianoOnPlayer.activeInHierarchy)
             {
-                this.gameObject.SetActive(true);
+                PutDownText.SetActive(true);
 
-                PianoOnPlayer.SetActive(false);
+                if (Input.GetKey(KeyCode.E))
+                {
+                 this.gameObject.SetActive(true);
 
-                PutDownText.SetActive(false);
+                 PianoOnPlayer.SetActive(false);
 
-                PianoPlaced.SetActive(true);
+                 PutDownText.SetActive(false);
 
-                PianoDest.SetActive(false);
+                 PianoPlaced.SetActive(true);
 
-                playSound.Play();
+                 PianoDest.SetActive(false);
+
+                 playSound.Play();
+                }
+
             }
+            
+            else 
+            {
+                RecoverText.SetActive(true);
+            }
+            
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         PutDownText.SetActive(false);
+        RecoverText.SetActive(false);
     }
 
 }
