@@ -10,6 +10,7 @@ public class DrumPutDown : MonoBehaviour
     public GameObject DrumPlaced;
     public GameObject DrumDest;
     public AudioSource playSound;
+    public GameObject RecoverText;
 
     void Start()
     {
@@ -21,28 +22,38 @@ public class DrumPutDown : MonoBehaviour
 
         DrumPlaced.SetActive(false);
 
+        RecoverText.SetActive(false);
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-
-            PutDownText.SetActive(true);
-
-            if (Input.GetKey(KeyCode.E))
+            if (DrumOnPlayer.activeInHierarchy)
             {
-                this.gameObject.SetActive(true);
+                PutDownText.SetActive(true);
 
-                DrumOnPlayer.SetActive(false);
+                if (Input.GetKey(KeyCode.E))
+                {
+                    this.gameObject.SetActive(true);
 
-                PutDownText.SetActive(false);
+                    DrumOnPlayer.SetActive(false);
 
-                DrumPlaced.SetActive(true);
+                    PutDownText.SetActive(false);
 
-                DrumDest.SetActive(false);
+                    DrumPlaced.SetActive(true);
 
-                playSound.Play();
+                    DrumDest.SetActive(false);
+
+                    playSound.Play();
+
+                }
+           
+            }
+
+            else
+            {
+                RecoverText.SetActive(true);
             }
         }
     }
@@ -50,6 +61,7 @@ public class DrumPutDown : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         PutDownText.SetActive(false);
+        RecoverText.SetActive(false);
     }
 
 }

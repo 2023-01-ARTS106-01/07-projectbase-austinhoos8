@@ -6,6 +6,7 @@ public class PickUp_drums : MonoBehaviour
 {
     public GameObject PickUpText;
     public GameObject DrumsOnPlayer;
+    
 
 
     // Start is called before the first frame update
@@ -13,23 +14,30 @@ public class PickUp_drums : MonoBehaviour
     {
         DrumsOnPlayer.SetActive(false);
         PickUpText.SetActive(false);
+        
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-
-            PickUpText.SetActive(true);
-
-            if (Input.GetKey(KeyCode.E))
+            
             {
-                this.gameObject.SetActive(false);
+                PickUpText.SetActive(true);
 
-                DrumsOnPlayer.SetActive(true);
+                if (Input.GetKey(KeyCode.E))
+                {
+                    this.gameObject.SetActive(false);
 
-                PickUpText.SetActive(false);
+                    DrumsOnPlayer.SetActive(true);
+
+                    PickUpText.SetActive(false);
+                }
+
             }
+
+            
+           
         }
     }
 

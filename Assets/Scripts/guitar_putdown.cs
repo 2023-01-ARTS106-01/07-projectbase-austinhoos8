@@ -10,6 +10,8 @@ public class guitar_putdown : MonoBehaviour
     public GameObject GuitarPlaced;
     public GameObject GuitarDest;
     public AudioSource playSound;
+    public GameObject RecoverText;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -22,37 +24,49 @@ public class guitar_putdown : MonoBehaviour
 
         GuitarPlaced.SetActive(false);
 
+        RecoverText.SetActive(false);
+
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-
-            PutDownText.SetActive(true);
-
-            if (Input.GetKey(KeyCode.E))
+            if (GuitarOnPlayer.activeInHierarchy)
             {
-                this.gameObject.SetActive(true);
+                PutDownText.SetActive(true);
 
-                GuitarOnPlayer.SetActive(false);
+                if (Input.GetKey(KeyCode.E))
+                {
+                    this.gameObject.SetActive(true);
 
-                PutDownText.SetActive(false);
+                    GuitarOnPlayer.SetActive(false);
 
-                GuitarPlaced.SetActive(true);
+                    PutDownText.SetActive(false);
 
-                GuitarDest.SetActive(false);
+                    GuitarPlaced.SetActive(true);
 
-                playSound.Play();
+                    GuitarDest.SetActive(false);
 
+                    playSound.Play();
+
+
+                }
 
             }
+
+            else
+            {
+                RecoverText.SetActive(true);
+            }
+            
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         PutDownText.SetActive(false);
+        RecoverText.SetActive(false);
     }
 
 }
