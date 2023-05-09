@@ -6,6 +6,7 @@ public class Pickup_Guitar : MonoBehaviour
 {
     public GameObject PickUpText;
     public GameObject GuitarOnPlayer;
+    public AudioSource PlaySound;
     
 
 
@@ -31,6 +32,9 @@ public class Pickup_Guitar : MonoBehaviour
                 GuitarOnPlayer.SetActive(true);
 
                 PickUpText.SetActive(false);
+
+                PlaySound.Play();
+
             }
         }
     }

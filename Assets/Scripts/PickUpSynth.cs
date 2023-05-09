@@ -6,6 +6,7 @@ public class PickUpSynth : MonoBehaviour
 {
     public GameObject PickUpText;
     public GameObject SynthOnPlayer;
+    public AudioSource playSound;
 
 
 
@@ -31,6 +32,8 @@ public class PickUpSynth : MonoBehaviour
                 SynthOnPlayer.SetActive(true);
 
                 PickUpText.SetActive(false);
+
+                playSound.Play();
             }
         }
     }
