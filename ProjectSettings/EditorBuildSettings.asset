@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/musicfest.unity
     guid: e0274089d3c4f1249bc0084a24a33cb9
+  - enabled: 1
+    path: Assets/Scenes/UnisonMenu.unity
+    guid: e5521b116ea117f46bf34e354609eea3
   m_configObjects: {}
